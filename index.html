@@ -10,10 +10,69 @@
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Link CSS File -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>Personal Wallet</header>
+    <header>
+        <h1 class="text-primary text-center fw-bolder py-md-5 py-3">Personal Wallet</h1>
+    </header>
+    <main class="container p-2">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://i.ibb.co/vwMJn8L/money-sharing-rgb-color-icon-finance-percentage-chart-divide-budget-into-parts-after-tax-income-mone.png"
+                    alt="personal wallet" class="img-fluid">
+            </div>
+            <div class="col-md-5 bg-light ms-auto">
+                <div class="text-center p-4">
+                    <h4 id="error-msg" class="text-danger">hello</h4>
+                    <h4>Income</h4>
+                    <div class="row">
+                        <div class="col-5 text-end pt-1">Income : </div>
+                        <div class="col-7 text-start">
+                            <input type="text" class="">
+                        </div>
+                    </div>
+                    <h4>Expenses</h4>
+                    <div class="row">
+                        <div class="col-5 text-end pt-1">Food : </div>
+                        <div class="col-7 text-start">
+                            <input type="text" class="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-end pt-1">Rent : </div>
+                        <div class="col-7 text-start">
+                            <input type="text" class="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-end pt-1">Clothes : </div>
+                        <div class="col-7 text-start">
+                            <input type="text" class="">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary py-2 px-5 fw-bold my-3">Calculate</button>
+                    <h4>Total Expenses : <span id="total-expenses"></span></h4>
+                    <h4>Balance : <span id="balance"></span></h4>
+                    <div class="row py-2 justify-content-center">
+                        <div class="col-4 text-end pt-1">Save : </div>
+                        <div class="col-3 text-center">
+                            <input type="text" class="">
+                        </div>
+                        <div class="col-1 text-start pt-1">%</div>
+                        <div class="col-4 text-start">
+                            <button type="text" class="btn btn-primary fw-bold px-3">Save</button>
+                        </div>
+                    </div>
+                    <h4>Saving Amount : <span id="saving"></span></h4>
+                    <h4>Remaining Balance : <span id="remain-balance"></span></h4>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

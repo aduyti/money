@@ -1,0 +1,12 @@
+input {
+    background-color: thistle;
+    border: 2px solid #858299;
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 0 5px;
+    width: 90%;
+}
+
+#error-msg {
+    display: none;
+}
