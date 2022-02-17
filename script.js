@@ -18,6 +18,10 @@ document.getElementById("calculate-btn").addEventListener('click', function (eve
         totalExpenses.innerText = expenses;
         balance.innerText = currentBalance;
     }
+    else if (isNaN(currentBalance)) { } // Error already displayed
+    else {
+        showError('Expenses exceeded Income');
+    }
 });
 // check for error in input
 function checkInput(inputID) {
