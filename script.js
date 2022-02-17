@@ -15,8 +15,8 @@ document.getElementById("calculate-btn").addEventListener('click', function () {
     const clothesExpenses = checkInput('Clothes');
     const expenses = foodExpenses + rent + clothesExpenses;   // sum of expenses
     if (!isNaN(expenses) && !isNaN(income)) {   // if no error occur
-        currentBalance = income - expenses;
-        if (currentBalance >= 0) {
+        if (income >= expenses) {   // Income greater than expenses
+            currentBalance = income - expenses;
             totalExpenses.innerText = expenses;
             balance.innerText = currentBalance;
         }
@@ -31,9 +31,18 @@ document.getElementById("save-btn").addEventListener('click', function () {
     const savingPercentage = checkInput('Save');
     if (!isNaN(savingPercentage) && !isNaN(income)) {   // if no error occur
         if (savingPercentage >= 0 && savingPercentage <= 100) { // saving percentage should be between 0 and 100
-            const savings = income * savingPercentage / 100
-            savingAmount.innerText = savings;
-            document.getElementById("remain-balance").innerText = parseFloat(balance.innerText) - savings;
+            const savings = income * savingPercentage / 100;
+            const saveFrom = (currentBalance || income);
+            if (saveFrom >= savings) {  // balance is greater than savings
+                savingAmount.innerText = savings;
+                document.getElementById("remain-balance").innerText = saveFrom - savings;
+            }
+            else {
+                showError("Savings exceeded Balance")
+            }
+        }
+        else {
+            showError('Saving should be between 0 and 100%');
         }
     }
 });
