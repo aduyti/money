@@ -1,20 +1,35 @@
-document.getElementById("input-container").addEventListener('keyup', function (event) {
-    if (event.target.tagName == 'INPUT') {
-        if (checkInput(event.target.value)) {
-            console.log(event.target.value);
-        }
-    }
+const errorMessage = document.getElementById('error-msg');
+const totalExpenses = document.getElementById('total-expenses');
+const balance = document.getElementById('balance');
+let currentBalance = 0;
+
+
+// click event for calculate button
+document.getElementById("calculate-btn").addEventListener('click', function (event) {
+    errorMessage.innerHTML = '';
+    currentBalance = 0;
+    const income = checkInput('Income');
+    const foodExpenses = checkInput('Food');
+    const rent = checkInput('Rent');
+    const clothesExpenses = checkInput('Clothes');
 });
-// verify input 
-function checkInput(inputNumber) {
-    if (isNaN(inputNumber)) {   // if input is not a number  
-        console.error('NaN');
+// check for error in input
+function checkInput(inputID) {
+    const input = document.getElementById(inputID);
+    if (isNaN(input.value)) {   // input not number
+        showError(inputID + ' should be a number');
     }
-    else if (inputNumber < 0) { // if input is negative number
-        console.error('Negative')
+    else if (input.value < 0) { // input is negative
+        showError(inputID + ' should be positive');
+    }
+    else if (isNaN(parseFloat(input.value))) {  // input empty
+        showError(inputID + ' is Empty');
     }
     else {
-        return true;
+        return parseFloat(input.value);
     }
-    return false;
+}
+
+function showError(msg) {
+    console.error(msg);
 }

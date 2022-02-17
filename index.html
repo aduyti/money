@@ -26,45 +26,46 @@
                     alt="personal wallet" class="img-fluid">
             </div>
             <div class="col-md-5 bg-light ms-auto">
-                <div id="input-container" class="text-center p-4">
-                    <h4 id="error-msg" class="text-danger">hello</h4>
+                <div class="text-center py-4">
+                    <!-- <p id="error-msg" class=" border border-warning rounded-3 bg-danger text-white"></p> -->
+                    <div id="error-msg"></div>
                     <h4>Income</h4>
                     <div class="row">
                         <div class="col-5 text-end pt-1">Income : </div>
                         <div class="col-7 text-start">
-                            <input type="text" class="">
+                            <input id="Income" type="text" class="">
                         </div>
                     </div>
                     <h4>Expenses</h4>
                     <div class="row">
                         <div class="col-5 text-end pt-1">Food : </div>
                         <div class="col-7 text-start">
-                            <input type="text" class="">
+                            <input id="Food" type="text" class="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-5 text-end pt-1">Rent : </div>
                         <div class="col-7 text-start">
-                            <input type="text" class="">
+                            <input id="Rent" type="text" class="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-5 text-end pt-1">Clothes : </div>
                         <div class="col-7 text-start">
-                            <input type="text" class="">
+                            <input id="Clothes" type="text" class="">
                         </div>
                     </div>
-                    <button class="btn btn-primary py-2 px-5 fw-bold my-3">Calculate</button>
+                    <button id="calculate-btn" class="btn btn-primary py-2 px-5 fw-bold my-3">Calculate</button>
                     <h4>Total Expenses : <span id="total-expenses"></span></h4>
                     <h4>Balance : <span id="balance"></span></h4>
                     <div class="row py-2 justify-content-center">
                         <div class="col-4 text-end pt-1">Save : </div>
                         <div class="col-3 text-center">
-                            <input type="text" class="">
+                            <input id="Save" type="text" class="">
                         </div>
                         <div class="col-1 text-start pt-1">%</div>
                         <div class="col-4 text-start">
-                            <button type="text" class="btn btn-primary fw-bold px-3">Save</button>
+                            <button id="save-btn" class="btn btn-primary fw-bold px-3">Save</button>
                         </div>
                     </div>
                     <h4>Saving Amount : <span id="saving"></span></h4>
