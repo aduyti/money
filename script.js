@@ -12,6 +12,12 @@ document.getElementById("calculate-btn").addEventListener('click', function (eve
     const foodExpenses = checkInput('Food');
     const rent = checkInput('Rent');
     const clothesExpenses = checkInput('Clothes');
+    let expenses = foodExpenses + rent + clothesExpenses;   // sum of expenses
+    currentBalance = income - expenses;
+    if (currentBalance >= 0) {
+        totalExpenses.innerText = expenses;
+        balance.innerText = currentBalance;
+    }
 });
 // check for error in input
 function checkInput(inputID) {
