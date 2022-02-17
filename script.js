@@ -1,28 +1,44 @@
 const errorMessage = document.getElementById('error-msg');
 const totalExpenses = document.getElementById('total-expenses');
 const balance = document.getElementById('balance');
+const savingAmount = document.getElementById('saving');
 let currentBalance = 0;
 
 
-// click event for calculate button
-document.getElementById("calculate-btn").addEventListener('click', function (event) {
+// set click event for calculate button
+document.getElementById("calculate-btn").addEventListener('click', function () {
     errorMessage.innerHTML = '';
     currentBalance = 0;
     const income = checkInput('Income');
     const foodExpenses = checkInput('Food');
     const rent = checkInput('Rent');
     const clothesExpenses = checkInput('Clothes');
-    let expenses = foodExpenses + rent + clothesExpenses;   // sum of expenses
-    currentBalance = income - expenses;
-    if (currentBalance >= 0) {
-        totalExpenses.innerText = expenses;
-        balance.innerText = currentBalance;
-    }
-    else if (isNaN(currentBalance)) { } // Error already displayed
-    else {
-        showError('Expenses exceeded Income');
+    const expenses = foodExpenses + rent + clothesExpenses;   // sum of expenses
+    if (!isNaN(expenses) && !isNaN(income)) {   // if no error occur
+        currentBalance = income - expenses;
+        if (currentBalance >= 0) {
+            totalExpenses.innerText = expenses;
+            balance.innerText = currentBalance;
+        }
+        else {
+            showError('Expenses exceeded Income');
+        }
     }
 });
+// set click event for save button
+document.getElementById("save-btn").addEventListener('click', function () {
+    const income = checkInput('Income');
+    const savingPercentage = checkInput('Save');
+    if (!isNaN(savingPercentage) && !isNaN(income)) {   // if no error occur
+        if (savingPercentage >= 0 && savingPercentage <= 100) { // saving percentage should be between 0 and 100
+            const savings = income * savingPercentage / 100
+            savingAmount.innerText = savings;
+            document.getElementById("remain-balance").innerText = parseFloat(balance.innerText) - savings;
+        }
+    }
+});
+
+
 // check for error in input
 function checkInput(inputID) {
     const input = document.getElementById(inputID);
