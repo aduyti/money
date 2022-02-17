@@ -1,7 +1,4 @@
 const errorMessage = document.getElementById('error-msg');
-const totalExpenses = document.getElementById('total-expenses');
-const balance = document.getElementById('balance');
-const savingAmount = document.getElementById('saving');
 let currentBalance = 0;
 
 
@@ -9,6 +6,7 @@ let currentBalance = 0;
 document.getElementById("calculate-btn").addEventListener('click', function () {
     errorMessage.innerHTML = '';
     currentBalance = 0;
+
     const income = checkInput('Income');
     const foodExpenses = checkInput('Food');
     const rent = checkInput('Rent');
@@ -17,8 +15,8 @@ document.getElementById("calculate-btn").addEventListener('click', function () {
     if (!isNaN(expenses) && !isNaN(income)) {   // if no error occur
         if (income >= expenses) {   // Income greater than expenses
             currentBalance = income - expenses;
-            totalExpenses.innerText = expenses;
-            balance.innerText = currentBalance;
+            document.getElementById('total-expenses').innerText = expenses;
+            document.getElementById('balance').innerText = currentBalance;
         }
         else {
             showError('Expenses exceeded Income');
@@ -27,23 +25,29 @@ document.getElementById("calculate-btn").addEventListener('click', function () {
 });
 // set click event for save button
 document.getElementById("save-btn").addEventListener('click', function () {
+    errorMessage.innerHTML = '';
+
     const income = checkInput('Income');
     const savingPercentage = checkInput('Save');
-    if (!isNaN(savingPercentage) && !isNaN(income)) {   // if no error occur
-        if (savingPercentage >= 0 && savingPercentage <= 100) { // saving percentage should be between 0 and 100
-            const savings = income * savingPercentage / 100;
-            const saveFrom = (currentBalance || income);
-            if (saveFrom >= savings) {  // balance is greater than savings
-                savingAmount.innerText = savings;
-                document.getElementById("remain-balance").innerText = saveFrom - savings;
+    if (document.getElementById('balance').innerText != '') {
+        if (!isNaN(savingPercentage) && !isNaN(income)) {   // if no error occur
+            if (savingPercentage >= 0 && savingPercentage <= 100) { // saving percentage should be between 0 and 100
+                const savings = income * savingPercentage / 100;
+                if (currentBalance >= savings) {  // balance is greater than savings
+                    document.getElementById('saving').innerText = savings;
+                    document.getElementById("remain-balance").innerText = currentBalance - savings;
+                }
+                else {
+                    showError("Savings exceeded Balance")
+                }
             }
             else {
-                showError("Savings exceeded Balance")
+                showError('Saving should be between 0 and 100%');
             }
         }
-        else {
-            showError('Saving should be between 0 and 100%');
-        }
+    }
+    else {
+        showError('Calculate expenses first');
     }
 });
 
@@ -66,5 +70,8 @@ function checkInput(inputID) {
 }
 
 function showError(msg) {
-    console.error(msg);
+    const errorParagraph = document.createElement('p');
+    errorParagraph.innerText = msg;
+    errorParagraph.classList.add("border", "border-2", "border-warning", "rounded-3", "bg-danger", "text-white", "mb-1")
+    errorMessage.appendChild(errorParagraph);
 }
