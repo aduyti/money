@@ -1,8 +1,8 @@
 input {
-    background-color: thistle;
-    border: 2px solid #858299;
+    background-color: #cec2ce;
+    border: none;
     margin: 5px 0;
     border-radius: 5px;
-    padding: 0 5px;
+    padding: 2px 10px;
     width: 90%;
 }
